@@ -1,4 +1,8 @@
+require("dotenv").config();
+
 import express from 'express';
+
+import { PORT } from './environmentVariables';
 
 const app = express();
 
@@ -12,6 +16,6 @@ app.post("/", (req, res) => {
 });
 
 //TODO: Create environment variables
-app.listen(3333, () => {
-    console.log("🚀 Server is listening on port 3333");
+app.listen(PORT, () => {
+    console.log("🚀 Server is listening on port", PORT);
 });

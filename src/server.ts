@@ -1,21 +1,16 @@
 require("dotenv").config();
 
+import 'reflect-metadata';
 import express from 'express';
-
 import { PORT } from './environmentVariables';
+import "./database";
+import { router } from './routes';
 
 const app = express();
 
+app.use(express.json());
+app.use(router);
 
-app.get("/", (req, res) => {
-    return res.json({message: "Hello World - NLW04"});
-});
-
-app.post("/", (req, res) => {
-    return res.json({message: "Data created with success"});
-});
-
-//TODO: Create environment variables
 app.listen(PORT, () => {
-    console.log("🚀 Server is listening on port", PORT);
+    console.log("🚀 Server is running on port", PORT);
 });
